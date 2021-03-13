@@ -28,6 +28,11 @@ app.post('/callback', line.middleware(config), (req, res) => {
     });
 });
 
+app.get('/', (req, res) => {
+  // res.status(404).send('Oops, page is not found');
+  res.send('404');
+})
+
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
