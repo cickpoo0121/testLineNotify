@@ -20,7 +20,7 @@ const app = express();
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
   console.log(req.body);
-  // console.log(req.body.event[0].message);
+  console.log(req.body.events[0].message);
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => {
