@@ -19,6 +19,8 @@ const app = express();
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
+  console.log(req.body);
+  console.log(req.body.event[0].message);
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => {
@@ -33,6 +35,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 app.get('/', (req, res) => {
   // res.status(404).send('Oops, page is not found');
+  console.log('error')
   res.send('404');
 })
 
