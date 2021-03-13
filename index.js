@@ -16,10 +16,12 @@ const client = new line.Client(config);
 // about Express itself: https://expressjs.com/
 const app = express();
 
+// ========= /callback ==========
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
   console.log(req.body);
+  console.log(req.body.events[0].source);
   console.log(req.body.events[0].message);
   Promise
     .all(req.body.events.map(handleEvent))
@@ -33,11 +35,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
     });
 });
 
-app.get('/', (req, res) => {
-  // res.status(404).send('Oops, page is not found');
-  console.log('error')
-  res.send('404');
-})
+// ========= /handeEvent function ==========
 
 // event handler
 function handleEvent(event) {
@@ -52,6 +50,21 @@ function handleEvent(event) {
   // use reply API
   return client.replyMessage(event.replyToken, echo);
 }
+
+// ========= /other route ==========
+
+app.get('/', (req, res) => {
+  // res.status(404).send('Oops, page is not found');
+  console.log('error')
+  res.send('404');
+})
+
+app.get('https://api.line.me/v2/bot/followers/ids', (req, res) => {
+  // res.status(404).send('Oops, page is not found');
+  console.log('error')
+  res.send('404');
+})
+
 
 
 // listen on port

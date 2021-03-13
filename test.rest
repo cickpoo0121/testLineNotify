@@ -1,0 +1,3 @@
+GET https://api.line.me/v2/bot/followers/@135lkfxo
+content-type: application/json
+Authorization: Bearer {{'uSGP9ZDQSDOE9Jt/jz94ukP/XgfKO5flZqs4H6cqrQ8ZZtgLLCqfJSL0PF0oy3u6alKJpK1ZnqdWQt1cztywFxmfvUUlwnlALgI0wNC7yDWBsRxqo4H3XrpXzZS3BII6ZH9mP8zX6FsVhTVSBgYGZwdB04t89/1O/w1cDnyilFU='}}
