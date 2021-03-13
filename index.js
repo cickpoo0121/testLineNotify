@@ -15,6 +15,7 @@ const client = new line.Client(config);
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
+var httpServer = require('http').Server(app);
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
@@ -32,6 +33,13 @@ app.post('/callback', line.middleware(config), (req, res) => {
       res.status(500).end();
     });
 });
+
+// app.post('/callback', (req, res) => {
+//   console.log(req.body);
+//   console.log(req.body.events[0].message);
+
+
+// })
 
 app.get('/', (req, res) => {
   // res.status(404).send('Oops, page is not found');
@@ -53,8 +61,19 @@ function handleEvent(event) {
   return client.replyMessage(event.replyToken, echo);
 }
 
+
 // listen on port
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`listening on ${port}`);
+// app.listen(port, () => {
+//   console.log(`listening on ${port}`);
+// });
+
+
+// var ip = 'https://elderl-line-notify-test.herokuapp.com/';
+// var port = 35000;
+
+const ip = process.env.IP || 'localhost';
+
+httpServer.listen(port, ip, function () {
+  console.log("Listening to " + ip + ":" + port);
 });
