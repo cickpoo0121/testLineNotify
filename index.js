@@ -34,13 +34,6 @@ app.post('/callback', line.middleware(config), (req, res) => {
     });
 });
 
-// app.post('/callback', (req, res) => {
-//   console.log(req.body);
-//   console.log(req.body.events[0].message);
-
-
-// })
-
 app.get('/', (req, res) => {
   // res.status(404).send('Oops, page is not found');
   console.log('error')
@@ -64,16 +57,16 @@ function handleEvent(event) {
 
 // listen on port
 const port = process.env.PORT || 3000;
-// app.listen(port, () => {
-//   console.log(`listening on ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`listening on ${port}`);
+});
 
 
 // var ip = 'https://elderl-line-notify-test.herokuapp.com/';
 // var port = 35000;
 
-const ip = process.env.IP || 'localhost';
+// const ip = process.env.IP || 'localhost';
 
-httpServer.listen(port, ip, function () {
-  console.log("Listening to " + ip + ":" + port);
-});
+// httpServer.listen(port, ip, function () {
+//   console.log("Listening to " + ip + ":" + port);
+// });
